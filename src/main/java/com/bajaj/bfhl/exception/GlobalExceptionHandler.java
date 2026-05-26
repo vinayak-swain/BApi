@@ -17,6 +17,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<BfhlResponse> handleValidationException(MethodArgumentNotValidException ex) {
+        ex.printStackTrace();
         BfhlResponse errorResponse = buildErrorResponse();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
@@ -26,6 +27,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(InvalidInputException.class)
     public ResponseEntity<BfhlResponse> handleInvalidInputException(InvalidInputException ex) {
+        ex.printStackTrace();
         BfhlResponse errorResponse = buildErrorResponse();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
@@ -35,6 +37,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<BfhlResponse> handleGenericException(Exception ex) {
+        ex.printStackTrace();
         BfhlResponse errorResponse = buildErrorResponse();
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
